@@ -144,11 +144,9 @@ def parse_tsv(
             filtered_df = parser.filter_by_element_id(df, key)
             filtered_df = parser.filter_by_consolidation(filtered_df)
             result = parser.to_dict(filtered_df, value, contain_year)
-            # 結果を格納
             sheet_data.update(result)
 
         financial_data[sheet_name] = sheet_data  # JSONデータに追加
-    # もしmeta["連結決算の有無"]==falseであればNone.
     if financial_data["META"].get("連結決算の有無") == "false":
         return None
     financial_data = FinancialData(

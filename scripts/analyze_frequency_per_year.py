@@ -8,7 +8,6 @@ from tqdm import tqdm
 from matplotlib import pyplot as plt
 
 dir = "edinet_corpus/annual"
-# dir 以下のすべてのtsvファイルを取得
 edinet_codes = os.listdir(dir)
 tsv_files = glob.glob(os.path.join(dir, "*", "*.tsv"))
 print(f"Number of tsv files: {len(tsv_files)}")
@@ -29,21 +28,18 @@ def get_current_fiscal_year_start_date(tsv_file, parser):
 
 print(get_current_fiscal_year_start_date(tsv_files[0], parser))
 
-# 年度ごとのファイル数をカウント
 year_count = Counter()
 for tsv_file in tqdm(tsv_files):
-    # 年度を取得
     year = get_current_fiscal_year_start_date(tsv_file, parser)
     year_count[year] += 1
     if year in [2009, 2010, 2011, 2012, 2013]:
         print(tsv_file)
 
-# 年度, countの表にしてprint
+
 year_count = dict(sorted(year_count.items()))
 
 print(year_count)
 
-# plot bar
 plt.figure(figsize=(10, 6))
 plt.bar(year_count.keys(), year_count.values())
 plt.xlabel("Year")

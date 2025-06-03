@@ -4,10 +4,9 @@ import polars as pl
 import os
 import matplotlib_fontja  # noqa
 
-# print all columns
 pl.Config.set_tbl_rows(100)
-# font size
-plt.rcParams["font.size"] = 30  # フォントサイズを少し大きく
+
+plt.rcParams["font.size"] = 30 
 
 industry_mapping = {
     "水産・農林業": "食品",
@@ -45,7 +44,6 @@ industry_mapping = {
     "不動産業": "不動産",
 }
 
-# 英語の短縮版ラベル名 - 長すぎる名前を短くして見やすく
 label_en_map = {
     "食品": "Food",
     "電気・ガス・エネルギー資源": "Energy",
@@ -70,28 +68,23 @@ downloader = Downloader()
 df = downloader.edinet_code_info
 # ['ＥＤＩＮＥＴコード', '提出者種別', '上場区分', '連結の有無', '資本金', '決算日', '提出者名', '提出者名（英字）', '提出者名（ヨミ）', '所在地', '提出者業種', '証券コード', '提出者法人番号']
 
-# statistics
+
 dir = "edinet_corpus/annual"
 edinet_codes = os.listdir(dir)
-# filter by edinet_codes
+
 df = df.filter(pl.col("ＥＤＩＮＥＴコード").is_in(edinet_codes))
 print(df.head(3))
-# number of edinet codes
+
 print(f"Number of edinet codes: {len(df)}")
 
-# 上場区分
 print(df["上場区分"].value_counts())
 
-# 連結の有無
 print(df["連結の有無"].value_counts())
 
-# 提出者種別
 print(df["提出者種別"].value_counts())
 
-# 提出者業種
 print(df["提出者業種"].value_counts())
 
-# map industry to 16 industry
 df = df.with_columns(
     pl.col("提出者業種").replace(industry_mapping, default="その他").alias("業種分類")
 )
@@ -99,24 +92,21 @@ df = df.filter(pl.col("業種分類") != "その他")
 
 print(df)
 
-# map industry to english
 df = df.with_columns(
     pl.col("業種分類").replace(label_en_map, default="その他").alias("industry_en")
 )
 
-# plot industry by 業種分類
 industry_counts = df["industry_en"].value_counts()
 industry_counts.columns = ["業種", "件数"]
-# sort by 件数
+
 industry_counts = industry_counts.sort("件数")
-# 合計
+
 print(f"Total industry's company: {df.filter(pl.col('業種分類') != 'その他').shape[0]}")
 
-# 横向きの棒グラフに変更して、産業名を見やすくする
-plt.figure(figsize=(12, 10))  # 図のサイズを横長に調整
+plt.figure(figsize=(12, 10))  
 bars = plt.barh(industry_counts["業種"], industry_counts["件数"])
 plt.xlim(0, industry_counts["件数"].max() * 1.2)
-# 棒グラフの上に値を表示
+
 for i, bar in enumerate(bars):
     plt.text(
         bar.get_width() + 1,
@@ -127,8 +117,8 @@ for i, bar in enumerate(bars):
 
 plt.xlabel("Count")
 plt.ylabel("Industry")
-plt.tight_layout(pad=1.5)  # 余白を増やして文字切れを防止
+plt.tight_layout(pad=1.5) 
 plt.savefig(
     "scripts/industry_distribution.png", bbox_inches="tight"
-)  # tight_layoutに加えてbbox_inchesも設定
+)  
 plt.show()
