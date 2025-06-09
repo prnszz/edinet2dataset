@@ -132,5 +132,5 @@ TODO:
 ```
 
 ## Acknowledgement
-We acknowledge [edger-crawler](https://github.com/lefterisloukas/edgar-crawler) as an inspiration for our tool.
+We acknowledge [edgar-crawler](https://github.com/lefterisloukas/edgar-crawler) as an inspiration for our tool.
 We also thank [EDINET](https://disclosure2.edinet-fsa.go.jp), which served as the primary resource for constructing our benchmark.
