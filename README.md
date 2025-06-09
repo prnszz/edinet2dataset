@@ -110,7 +110,7 @@ $ bash edinet_corpus.sh
 ```
 
 > [!NOTE]
-> To avoid placing a heavy load on EDINET, please refrain from downloading all reports from the past 10 years at once.
+> Please be careful not to send too many requests in parallel, as downloading reports from the past 10 years could place a significant load on EDINET.
 
 
 You will get the following directories
