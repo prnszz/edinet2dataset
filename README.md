@@ -1,4 +1,6 @@
 # edinet2dataset
+📚 [Paper](https://pub.sakana.ai/edinet-bench) | 📝 [Blog](https://sakana.ai/edinet-bench/) 
+
 edinet2dataset is a tool to construct financial datasets using [EDINET](https://disclosure2.edinet-fsa.go.jp). 
 
 edinet2dataset has two classes to build Japanese financial dataset using EDINET.
@@ -24,25 +26,54 @@ Please refer to the [official documentation](https://disclosure2dl.edinet-fsa.go
   
 ```bash
 $ python src/edinet2dataset/downloader.py --query トヨタ
-shape: (7, 3)
-┌─────────────────────────────────┬────────────────────┬─────────────────────────────────┐
-│ 提出者名                        ┆ ＥＤＩＮＥＴコード ┆ 提出者業種                      │
-│ ---                             ┆ ---                ┆ ---                             │
-│ str                             ┆ str                ┆ str                             │
-╞═════════════════════════════════╪════════════════════╪═════════════════════════════════╡
-│ トヨタ紡織株式会社              ┆ E00540             ┆ 輸送用機器                      │
-│ トヨタ自動車株式会社            ┆ E02144             ┆ 輸送用機器                      │
-│ トヨタファイナンス株式会社      ┆ E05031             ┆ サービス業                      │
-│ トヨタ　モーター　クレジット　  ┆ E05904             ┆ 外国法人・組合                  │
-│ コーポレーション                ┆                    ┆                                 │
-│ トヨタ　ファイナンス　オースト  ┆ E05954             ┆ 外国法人・組合                  │
-│ ラリア　リミテッド              ┆                    ┆                                 │
-│ トヨタ　モーター　ファイナンス  ┆ E20989             ┆ 外国法人・組合                  │
-│ 　（ネザーランズ）　ビーブイ    ┆                    ┆                                 │
-│ トヨタファイナンシャルサービス  ┆ E23700             ┆ 内国法人・組合（有価証券報告書  │
-│ 株式会社                        ┆                    ┆ 等の提出義務者以外）            │
-└─────────────────────────────────┴────────────────────┴─────────────────────────────────┘
 ```
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>提出者名</th>
+      <th>ＥＤＩＮＥＴコード</th>
+      <th>提出者業種</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>トヨタ紡織株式会社</td>
+      <td>E00540</td>
+      <td>輸送用機器</td>
+    </tr>
+    <tr>
+      <td>トヨタ自動車株式会社</td>
+      <td>E02144</td>
+      <td>輸送用機器</td>
+    </tr>
+    <tr>
+      <td>トヨタファイナンス株式会社</td>
+      <td>E05031</td>
+      <td>サービス業</td>
+    </tr>
+    <tr>
+      <td>トヨタ モーター クレジット コーポレーション</td>
+      <td>E05904</td>
+      <td>外国法人・組合</td>
+    </tr>
+    <tr>
+      <td>トヨタ ファイナンス オーストラリア リミテッド</td>
+      <td>E05954</td>
+      <td>外国法人・組合</td>
+    </tr>
+    <tr>
+      <td>トヨタ モーター ファイナンス（ネザーランズ）ビーブイ</td>
+      <td>E20989</td>
+      <td>外国法人・組合</td>
+    </tr>
+    <tr>
+      <td>トヨタファイナンシャルサービス株式会社</td>
+      <td>E23700</td>
+      <td>内国法人・組合（有価証券報告書等の提出義務者以外）</td>
+    </tr>
+  </tbody>
+</table>
+
 
 - Download the annual report submitted by Toyota Motor Corporation for the period from June 1, 2024, to June 28, 2024.
 
