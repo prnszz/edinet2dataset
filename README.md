@@ -110,7 +110,7 @@ $ bash edinet_corpus.sh
 ```
 
 > [!NOTE]
-> Downloading all reports from the past 10 years would place a heavy load on EDINET. Therefore, we have uploaded the files obtained from our execution on April 15, 2025, to [Google Drive](https://drive.google.com/drive/folders/1uHqsB3_f_ROWNVDqDnIvccDeK5AH8HdN?usp=sharing). Please use these files together with your own as needed.
+> To avoid placing a heavy load on EDINET, please refrain from downloading all reports from the past 10 years at once.
 
 
 You will get the following directories
