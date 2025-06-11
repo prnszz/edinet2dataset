@@ -1,5 +1,5 @@
 # edinet2dataset
-📚 [Paper](https://pub.sakana.ai/edinet-bench) | 📝 [Blog](https://sakana.ai/edinet-bench/) | 📁 [Dataset](https://huggingface.co/datasets/SakanaAI/EDINET-Bench)
+📚 [Paper](https://arxiv.org/abs/2506.08762) | 📝 [Blog](https://sakana.ai/edinet-bench/) | 📁 [Dataset](https://huggingface.co/datasets/SakanaAI/EDINET-Bench)
 
 edinet2dataset is a tool to construct financial datasets using [EDINET](https://disclosure2.edinet-fsa.go.jp). 
 
@@ -160,12 +160,13 @@ $ python scripts/industry_prediction/prepare_dataset.py
 ## Citation
 ```
 @misc{sugiura2025edinet,
-  author    = {Issa Sugiura and Takashi Ishida and Taro Makino and Chieko Tazuke and Takanori Nakagawa and Kosuke Nakago and David Ha},
-  title     = {{EDINET-Bench: Evaluating LLMs on Complex Financial Tasks using Japanese Financial Statements}},
-  institution = {Sakana AI},
-  year      = {2025},
-  month     = {June},
-  url = {https://pub.sakana.ai/edinet-bench}
+  author={Issa Sugiura and Takashi Ishida and Taro Makino and Chieko Tazuke and Takanori Nakagawa and Kosuke Nakago and David Ha},
+  title={{EDINET-Bench: Evaluating LLMs on Complex Financial Tasks using Japanese Financial Statements}},
+  year={2025},
+  eprint={2506.08762},
+  archivePrefix={arXiv},
+  primaryClass={q-fin.ST},
+  url={https://arxiv.org/abs/2506.08762}, 
 }
 ```
 
