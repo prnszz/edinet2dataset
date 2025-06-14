@@ -173,3 +173,17 @@ $ python scripts/industry_prediction/prepare_dataset.py
 ## Acknowledgement
 We acknowledge [edgar-crawler](https://github.com/lefterisloukas/edgar-crawler) as an inspiration for our tool.
 We also thank [EDINET](https://disclosure2.edinet-fsa.go.jp), which served as the primary resource for constructing our benchmark.
+
+----
+
+## CLI I used
+
+```bash
+# download annual reports for a specific company
+uv run python src/edinet2dataset/downloader.py --start_date 2021-01-01 --end_date 2024-12-31 --company_name "船井電機株式会社" --doc_type annual
+# parse the downloaded report
+uv run python src/edinet2dataset/parser.py \
+  --file_path data/E01863/S100LQ4H.tsv \
+  --category_list BS PL CF SUMMARY TEXT META \
+  --output_path parsed_output.json
+```

@@ -3,6 +3,9 @@ import argparse
 from edinet2dataset.element_id_table import BS, PL, CF, SUMMARY, META, TEXT
 from dataclasses import dataclass
 from loguru import logger
+import json
+from pathlib import Path
+
 
 
 @dataclass
@@ -168,32 +171,43 @@ def parse_args():
         type=str,
         nargs="+",
         help="Category to parse",
-        choices=[
-            "META",
-            "SUMMARY",
-            "BS",
-            "PL",
-            "CF",
-            "TEXT",
-        ],
+        choices=["META", "SUMMARY", "BS", "PL", "CF", "TEXT"],
+    )
+    parser.add_argument(
+        "--output_path",
+        type=str,
+        default="parsed_output.json",
+        help="Path to save the output JSON",
     )
     return parser.parse_args()
+
 
 
 if __name__ == "__main__":
     args = parse_args()
 
     financial_data = parse_tsv(args.file_path)
-    for category in args.category_list:
-        if category == "META":
-            print(financial_data.meta)
-        elif category == "SUMMARY":
-            print(financial_data.summary)
-        elif category == "BS":
-            print(financial_data.bs)
-        elif category == "PL":
-            print(financial_data.pl)
-        elif category == "CF":
-            print(financial_data.cf)
-        elif category == "TEXT":
-            print(financial_data.text)
+
+    output_dict = {}
+
+    if financial_data is None:
+        logger.warning("❗ 非連結決算のため出力しません")
+    else:
+        if "META" in args.category_list:
+            output_dict["META"] = financial_data.meta
+        if "SUMMARY" in args.category_list:
+            output_dict["SUMMARY"] = financial_data.summary
+        if "BS" in args.category_list:
+            output_dict["BS"] = financial_data.bs
+        if "PL" in args.category_list:
+            output_dict["PL"] = financial_data.pl
+        if "CF" in args.category_list:
+            output_dict["CF"] = financial_data.cf
+        if "TEXT" in args.category_list:
+            output_dict["TEXT"] = financial_data.text
+
+        output_path = Path(args.output_path)
+        with output_path.open("w", encoding="utf-8") as f:
+            json.dump(output_dict, f, ensure_ascii=False, indent=2)
+
+        logger.info(f"✅ JSON output saved to: {output_path}")
