@@ -14,9 +14,6 @@ uv run python src/edinet2dataset/downloader.py --start_date 2020-01-01 --end_dat
 echo "Downloading ユニゾホールディングス株式会社 data..." &
 uv run python src/edinet2dataset/downloader.py --start_date 2020-01-01 --end_date 2024-12-31 --company_name "ユニゾホールディングス株式会社" --doc_type annual &
 
-echo "Downloading 株式会社ＯＵＮＨ data..." &
-uv run python src/edinet2dataset/downloader.py --start_date 2020-01-01 --end_date 2024-12-31 --company_name "株式会社ＯＵＮＨ" --doc_type annual &
-
 echo "Downloading 株式会社アイ・テック data..." &
 uv run python src/edinet2dataset/downloader.py --start_date 2020-01-01 --end_date 2024-12-31 --company_name "株式会社アイ・テック" --doc_type annual &
 
@@ -31,9 +28,6 @@ uv run python src/edinet2dataset/downloader.py --start_date 2020-01-01 --end_dat
 
 echo "Downloading ＳＢＩ　ＦｉｎＴｅｃｈ　Ｓｏｌｕｔｉｏｎｓ株式会社 data..." &
 uv run python src/edinet2dataset/downloader.py --start_date 2020-01-01 --end_date 2024-12-31 --company_name "ＳＢＩ　ＦｉｎＴｅｃｈ　Ｓｏｌｕｔｉｏｎｓ株式会社" --doc_type annual &
-
-echo "Downloading 株式会社ビッグモーター data..." &
-uv run python src/edinet2dataset/downloader.py --start_date 2020-01-01 --end_date 2024-12-31 --company_name "株式会社ビッグモーター" --doc_type annual &
 
 echo "Waiting for all downloads to complete..."
 wait
